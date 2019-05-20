@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+  user = {
+    username: '',
+    password : '',
+    remember : false
+  };
+  constructor(public dialgoRef: MatDialogRef<LoginComponent>) { }
 
   ngOnInit() {
   }
 
+  onSubmit() {
+    console.log('User: ', this.user);
+    this.dialgoRef.close();
+  }
 }
