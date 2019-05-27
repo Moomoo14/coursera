@@ -23,11 +23,11 @@ export class ContactComponent implements OnInit {
   createForm() {
     this.feedbackForm = this.fb.group({
       firstname: '',
-      lastename: '',
+      lastname: '',
       telnum: 0,
       email: '',
       agree: false,
-      contactType: 'None',
+      contacttype: 'None',
       message: ''
     });
   }
@@ -35,14 +35,14 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     this.feedback = this.feedbackForm.value;
     console.log(this.feedback);
-    this.feedbackForm.reset({
-      firstname: '',
-      lastname: '',
-      telnum: '',
-      email: '',
+    this.feedbackForm = this.fb.group({
+      firstname: ["", Validators.required],
+      lastname: ["", Validators.required],
+      telnum: ["", Validators.required],
+      email: ["", Validators.required],
       agree: false,
-      contacttype: 'None',
-      message: ''
+      contacttype: "None",
+      message: ""
     });
     this.feedbackFormDirective.resetForm();
   }
