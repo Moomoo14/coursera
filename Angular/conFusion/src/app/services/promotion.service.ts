@@ -4,21 +4,21 @@ import { PROMOTIONS } from '../shared/promitions';
 import { delay } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class PromotionService {
-
-  constructor() { }
+  constructor() {}
 
   getPromotions(): Observable<Promotion[]> {
     return of(PROMOTIONS).pipe(delay(2000));
   }
 
-  getDish(id: string): Observable<Promotion> {
-    return of(PROMOTIONS.filter((promo) => (promo.id === id))[0]);
+  getPromotion(id: string): Observable<Promotion> {
+    return of(PROMOTIONS.filter(dish => dish.id === id)[0]).pipe(delay(2000));
   }
 
   getFeaturedPromotion(): Observable<Promotion> {
-    return of(PROMOTIONS.filter((promo) => promo.featured)[0]);
+    return of(PROMOTIONS.filter(dish => dish.featured)[0]).pipe(delay(2000));
   }
+
 }
